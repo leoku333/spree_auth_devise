@@ -51,7 +51,7 @@ it:
       send_paranoid_instructions: Se la tua e-mail esiste nel nostro database, riceverai un messaggio email con le istruzioni per sbloccare il tuo account entro qualche minuto.
       unlocked: Il tuo account è stato correttamente sbloccato. Ora sei collegato.
     passwords:
-      spree_user:
+      user:
         cannot_be_blank: La tua password non può essere vuota.
         send_instructions: Riceverai un'email con le istruzioni per resettare la tua password entro qualche minuto.
         updated: La tua password è stata cambiata con successo. Ora sei collegato.

@@ -5,8 +5,8 @@ RSpec.feature 'Change email', type: :feature do
     visit spree.root_path
     click_link 'Login'
 
-    fill_in 'spree_user[email]', with: user.email
-    fill_in 'spree_user[password]', with: 'secret'
+    fill_in 'user[email]', with: user.email
+    fill_in 'user[password]', with: 'secret'
     click_button 'Login'
 
     visit spree.edit_account_path

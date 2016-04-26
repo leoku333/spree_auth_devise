@@ -2,14 +2,14 @@ RSpec.describe Spree::UserPasswordsController, type: :controller do
 
   let(:token) { 'some_token' }
 
-  before { @request.env['devise.mapping'] = Devise.mappings[:spree_user] }
+  before { @request.env['devise.mapping'] = Devise.mappings[:user] }
 
   describe 'GET edit' do
     context 'when the user token has not been specified' do
       it 'redirects to the new session path' do
         spree_get :edit
         expect(response).to redirect_to(
-          'http://test.host/user/spree_user/sign_in'
+          'http://test.host/users/sign_in'
         )
       end
 
@@ -32,11 +32,11 @@ RSpec.describe Spree::UserPasswordsController, type: :controller do
 
   context '#update' do
     context 'when updating password with blank password' do
-      it 'shows error flash message, sets spree_user with token and re-displays password edit form' do
-        spree_put :update, { spree_user: { password: '', password_confirmation: '', reset_password_token: token } }
-        expect(assigns(:spree_user).kind_of?(Spree::User)).to eq true
-        expect(assigns(:spree_user).reset_password_token).to eq token
-        expect(flash[:error]).to eq I18n.t(:cannot_be_blank, scope: [:devise, :passwords, :spree_user])
+      it 'shows error flash message, sets user with token and re-displays password edit form' do
+        spree_put :update, { user: { password: '', password_confirmation: '', reset_password_token: token } }
+        expect(assigns(:user).kind_of?(Spree::User)).to eq true
+        expect(assigns(:user).reset_password_token).to eq token
+        expect(flash[:error]).to eq I18n.t(:cannot_be_blank, scope: [:devise, :passwords, :user])
         expect(response).to render_template :edit
       end
     end

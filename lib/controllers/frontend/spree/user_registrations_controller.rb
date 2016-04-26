@@ -17,7 +17,7 @@ class Spree::UserRegistrationsController < Devise::RegistrationsController
 
   # POST /resource/sign_up
   def create
-    @user = build_resource(spree_user_params)
+    @user = build_resource(user_params)
     resource_saved = resource.save
     yield resource if block_given?
     if resource_saved
@@ -27,7 +27,7 @@ class Spree::UserRegistrationsController < Devise::RegistrationsController
           current_order.associate_user! @user
         end
         sign_up(resource_name, resource)
-        session[:spree_user_signup] = true
+        session[:user_signup] = true
         respond_with resource, location: after_sign_up_path_for(resource)
       else
         set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}"
@@ -72,7 +72,7 @@ class Spree::UserRegistrationsController < Devise::RegistrationsController
 
   private
 
-  def spree_user_params
-    params.require(:spree_user).permit(Spree::PermittedAttributes.user_attributes)
+  def user_params
+    params.require(:user).permit(Spree::PermittedAttributes.user_attributes)
   end
 end

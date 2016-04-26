@@ -10,9 +10,9 @@ class Spree::Admin::UserSessionsController < Devise::SessionsController
   layout :resolve_layout
 
   def create
-    authenticate_spree_user!
+    authenticate_user!
 
-    if spree_user_signed_in?
+    if user_signed_in?
       respond_to do |format|
         format.html {
           flash[:success] = Spree.t(:logged_in_succesfully)
@@ -38,8 +38,8 @@ class Spree::Admin::UserSessionsController < Devise::SessionsController
     end
 
     def redirect_back_or_default(default)
-      redirect_to(session["spree_user_return_to"] || default)
-      session["spree_user_return_to"] = nil
+      redirect_to(session["user_return_to"] || default)
+      session["user_return_to"] = nil
     end
 
     def resolve_layout

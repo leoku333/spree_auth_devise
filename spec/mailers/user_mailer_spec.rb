@@ -30,7 +30,7 @@ RSpec.describe Spree::UserMailer, type: :mailer do
 
       context 'body includes' do
         it 'password reset url' do
-          expect(@message.body.raw_source).to include "http://#{store.url}/user/spree_user/password/edit"
+          expect(@message.body.raw_source).to include "http://#{store.url}/users/password/edit"
         end
       end
     end

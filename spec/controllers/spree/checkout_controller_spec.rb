@@ -17,7 +17,7 @@ RSpec.describe Spree::CheckoutController, type: :controller do
       end
 
       context 'when authenticated as registered user' do
-        before { allow(controller).to receive(:spree_current_user) { user } }
+        before { allow(controller).to receive(:current_user) { user } }
 
         it 'proceeds to the first checkout step' do
           spree_get :edit, { state: 'address' }
@@ -40,7 +40,7 @@ RSpec.describe Spree::CheckoutController, type: :controller do
       end
 
       context 'when authenticated as registered' do
-        before { allow(controller).to receive(:spree_current_user) { user } }
+        before { allow(controller).to receive(:current_user) { user } }
 
         it 'proceeds to the first checkout step' do
           spree_get :edit, { state: 'address' }
@@ -80,7 +80,7 @@ RSpec.describe Spree::CheckoutController, type: :controller do
 
       context 'with a registered user' do
         before do
-          allow(controller).to receive(:spree_current_user) { user }
+          allow(controller).to receive(:current_user) { user }
           allow(order).to receive(:user) { user }
           allow(order).to receive(:guest_token) { nil }
         end

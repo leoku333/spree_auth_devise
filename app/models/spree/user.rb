@@ -2,6 +2,7 @@ module Spree
   class User < Spree::Base
     include UserAddress
     include UserPaymentSource
+    include UserMethods
 
     devise :database_authenticatable, :registerable, :recoverable,
            :rememberable, :trackable, :validatable, :encryptable, :encryptor => 'authlogic_sha512'
@@ -14,7 +15,7 @@ module Spree
 
     before_validation :set_login
 
-    users_table_name = User.table_name
+    self.table_name = "users" 
     roles_table_name = Role.table_name
 
     scope :admin, -> { includes(:spree_roles).where("#{roles_table_name}.name" => "admin") }

@@ -26,7 +26,7 @@ fr:
       send_instructions: Vous recevrez dans quelques minutes un courriel avec les instructions sur la façon de déverrouiller votre compte.
       unlocked: Votre compte a été déverrouillé. Vous êtes maintenant connecté(e).
     passwords:
-      spree_user:
+      user:
         cannot_be_blank: Votre mot de passe ne peut pas être vide.
         send_instructions: Vous recevrez dans quelques minutes un courriel avec les instructions sur la façon de réinitialiser votre mot de passe.
         updated: Votre mot de passe a été changé avec succès. Vous êtes maintenant connecté(e).
